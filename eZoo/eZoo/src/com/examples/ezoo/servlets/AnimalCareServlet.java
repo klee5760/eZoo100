@@ -27,7 +27,7 @@ public class AnimalCareServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// Grab a list of Animals from the Database
-		AnimalDAO dao = DAOUtilities.getAnimalDao();
+		AnimalDAO dao = DAOUtilities.getAnimalDAO();
 		List<Animal> animals = dao.getAllAnimals();
 
 		// Populate the list into a variable that will be stored in the session

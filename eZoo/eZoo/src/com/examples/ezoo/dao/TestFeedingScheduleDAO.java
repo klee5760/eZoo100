@@ -9,8 +9,8 @@ public class TestFeedingScheduleDAO {
 
     public static void main(String[] args) {
         
-        FeedingScheduleDAO dao = new FeedingScheduleDAOImpl();
-        AnimalDAO animalDAO = new AnimalDAOImpl();
+    	FeedingScheduleDAO dao = new FeedingScheduleDAOImpl();
+		AnimalDAO animalDAO = new AnimalDAOImpl();
 
         FeedingSchedule feedingSchedule1 = new FeedingSchedule(401, "0800", "daily", "oatmeal", "breakfast");
         FeedingSchedule feedingSchedule2 = new FeedingSchedule(402, "1300", "daily", "penguin", "lunch");
@@ -30,7 +30,7 @@ public class TestFeedingScheduleDAO {
             System.out.println(e);
         }
 
-        List<FeedingSchedule> allFeedingSchedules = dao.getAllFeedingSchedule();
+        List<FeedingSchedule> allFeedingSchedules = dao.getAllFeedingSchedules();
         Collections.sort(allFeedingSchedules);
         for (int i = 0; i < allFeedingSchedules.size(); i++) {
             FeedingSchedule f = allFeedingSchedules.get(i);
@@ -41,7 +41,7 @@ public class TestFeedingScheduleDAO {
         Collections.sort(animals);
         for (Animal a : animals) {
             System.out.println(a.getName() + " has feeding schedule: ");
-            System.out.println(dao.FeedingSchedule(a));
+            System.out.println(dao.getFeedingSchedule(a));
         }
 
         try {
@@ -68,7 +68,7 @@ public class TestFeedingScheduleDAO {
             }
         }
 
-        dao.removeFeedingSchedule(animal.get(1-1));
+        dao.removeFeedingSchedule(animals.get(1-1));
      } catch (Exception e) {
          System.out.println(e);
      }
@@ -81,7 +81,7 @@ public class TestFeedingScheduleDAO {
     }
 
     try {
-        for(FeedingScheulde schedule : allFeedingSchedules) {
+        for(FeedingSchedule schedule : allFeedingSchedules) {
             if (schedule.getScheduleID() ==1) {
                 for(Animal animal : animals) {
                     if (animal.getAnimalID() ==1) {
@@ -91,7 +91,7 @@ public class TestFeedingScheduleDAO {
             }
         }
 
-        dao.assignFeedingSchedule(allFeedingSchedules.get(1-1), animal.get(1-1));
+        dao.assignFeedingSchedule(allFeedingSchedules.get(1-1), animals.get(1-1));
     } catch (Exception e1) {
         e1.printStackTrace();
     }

@@ -9,8 +9,8 @@ public interface FeedingScheduleDAO {
     void saveFeedingSchedule(FeedingSchedule schedule) throws Exception;
     void deleteFeedingSchedule(FeedingSchedule schedule) throws Exception;
     List<FeedingSchedule> getAllFeedingSchedules();
-    FeedingSchedule getAllFeedingSchedule(Animal animal);
-    void assignFeedingSchedule(FeedingSchedule feedingSchedule, Animal animal) throws exception;
+    FeedingSchedule getFeedingSchedule(Animal animal);
+    void assignFeedingSchedule(FeedingSchedule feedingSchedule, Animal animal) throws Exception;
     void removeFeedingSchedule(Animal animal) throws Exception;
     void updateFeedingSchedule(FeedingSchedule schedule) throws Exception;
     

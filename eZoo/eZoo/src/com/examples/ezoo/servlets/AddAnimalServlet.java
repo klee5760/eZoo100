@@ -69,7 +69,7 @@ public class AddAnimalServlet extends HttpServlet {
 				feedingScheduleID);
 		
 		//Call DAO method
-		AnimalDAO dao = DAOUtilities.getAnimalDao();
+		AnimalDAO dao = DAOUtilities.getAnimalDAO();
 		try {
 			dao.saveAnimal(animalToSave);
 			request.getSession().setAttribute("message", "Animal successfully created");

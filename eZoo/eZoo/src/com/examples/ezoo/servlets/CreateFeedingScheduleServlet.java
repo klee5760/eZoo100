@@ -24,8 +24,8 @@ public class CreateFeedingScheduleServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int scheduleID = Interger.parseInt(request.getParameter("scheduleID"));
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int scheduleID = Integer.parseInt(request.getParameter("scheduleID"));
 
         String feedingTime = request.getParameter("feedingTime");
         String recurrence = request.getParameter("recurrence");

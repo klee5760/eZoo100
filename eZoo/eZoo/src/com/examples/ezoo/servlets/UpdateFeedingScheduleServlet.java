@@ -28,7 +28,7 @@ public class UpdateFeedingScheduleServlet extends HttpServlet{
         String oldFood = request.getParameter("food");
         String oldNotes = request.getParameter("notes");
 
-        FeedingSchdeule oldFeedingSchedule = new FeedingSchedule(oldScheduleID, oldFeedingTime, oldRecurrence, oldFood, oldNotes);
+        FeedingSchedule oldFeedingSchedule = new FeedingSchedule(oldScheduleID, oldFeedingTime, oldRecurrence, oldFood, oldNotes);
 
         request.getSession().setAttribute("oldFeedingSchedule", (Object) oldFeedingSchedule);
 
@@ -36,7 +36,7 @@ public class UpdateFeedingScheduleServlet extends HttpServlet{
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         FeedingSchedule oldFeedingSchedule = (FeedingSchedule) request.getSession().getAttribute("oldFeedingSchedule");
 
@@ -47,9 +47,9 @@ public class UpdateFeedingScheduleServlet extends HttpServlet{
         String food = request.getParameter("food");
         String notes = request.getParameter("notes");
 
-        FeedingSchdeule scheduleToUpdate = new FeedingSchedule(scheduleID, feedingTime, recurrence, food, notes);
+        FeedingSchedule scheduleToUpdate = new FeedingSchedule(scheduleID, feedingTime, recurrence, food, notes);
 
-        FeedingSchdeuleDAO dao = DAOUtiliteis.getFeedingScheduleDAO();
+        FeedingScheduleDAO dao = DAOUtilities.getFeedingScheduleDAO();
         try{
             dao.updateFeedingSchedule(scheduleToUpdate);
 			request.getSession().setAttribute("message",  "Feeding schedule successfully updated");

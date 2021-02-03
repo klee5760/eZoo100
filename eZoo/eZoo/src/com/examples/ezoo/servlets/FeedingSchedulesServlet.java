@@ -23,6 +23,7 @@ public class FeedingSchedulesServlet extends HttpServlet {
     
     private static final long serialVersionUTD = 1L;
 
+    
     @Override
     protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -30,14 +31,14 @@ public class FeedingSchedulesServlet extends HttpServlet {
         List<FeedingSchedule> feedingSchedules = dao.getAllFeedingSchedules();
         Collections.sort(feedingSchedules);
 
-        AnimalDAO animalDAO = DAOUtilities.getAnimlaDAO();
+        AnimalDAO animalDAO = DAOUtilities.getAnimalDAO();
         List<Animal> animals = animalDAO.getAllAnimals();
-        Collection.sort(animals);
+        Collections.sort(animals);
         for (FeedingSchedule schedule : feedingSchedules) {
             String animalsWithSchedule = "";
             int count = 0;
             for (Animal animal : animals) {
-                if (schedule.getscheduleID() == animal.getFeedingScheduleID()) {
+                if (schedule.getScheduleID() == animal.getFeedingScheduleID()) {
                     count++;
                     String comma = "";
                     if(count > 1) {

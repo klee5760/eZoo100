@@ -1,7 +1,7 @@
 package com.examples.ezoo.model;
 
-public class Animal{
-	
+public class Animal implements Comparable<Animal>{
+
 	private long animalID = 0L;
 	private String name = "";
 	
@@ -146,11 +146,11 @@ public class Animal{
 		this.healthStatus = healthStatus;
 	}
 
-	public String getFeedingScheduleID() {
+	public int getFeedingScheduleID() {
 		return feedingScheduleID;
 	}
 
-	public void setFeedingScheduleID(String feedingScheduleID) {
+	public void setFeedingScheduleID(int feedingScheduleID) {
 		this.feedingScheduleID = feedingScheduleID;
 	}
 

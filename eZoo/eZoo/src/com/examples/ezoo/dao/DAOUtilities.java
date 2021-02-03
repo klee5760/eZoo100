@@ -17,16 +17,16 @@ public class DAOUtilities {
 	private static final String CONNECTION_PASSWORD = "password";
 	private static final String URL = "jdbc:postgresql://localhost:5432/eZoo";
 	
-	private static AnimalDaoImpl animalDaoImpl;
+	private static AnimalDAOImpl animalDAOImpl;
 	private static FeedingScheduleDAOImpl feedingScheduleDAOImpl;
 	private static Connection connection;
 
-	public static synchronized AnimalDAO getAnimalDao() {
+	public static synchronized AnimalDAO getAnimalDAO() {
 
-		if (animalDaoImpl == null) {
-			animalDaoImpl = new AnimalDaoImpl();
+		if (animalDAOImpl == null) {
+			animalDAOImpl = new AnimalDAOImpl();
 		}
-		return animalDaoImpl;
+		return animalDAOImpl;
 		}
 
 	public static synchronized FeedingScheduleDAO getFeedingScheduleDAO() {

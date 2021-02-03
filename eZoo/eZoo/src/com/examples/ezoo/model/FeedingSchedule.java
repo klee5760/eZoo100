@@ -19,7 +19,7 @@ public class FeedingSchedule implements Comparable<FeedingSchedule>{
         this.feedingTime = feedingTime;
         this.recurrence = recurrence;
         this.food = food;
-        this.note = notes;
+        this.notes = notes;
     }
 
     public int getScheduleID() {
@@ -30,11 +30,11 @@ public class FeedingSchedule implements Comparable<FeedingSchedule>{
         this.scheduleID = scheduleID;
     }
 
-    public String getfeedingTime() {
+    public String getFeedingTime() {
         return feedingTime;
     }
 
-    public void setfeedingTime(String feedingTime) {
+    public void setFeedingTime(String feedingTime) {
         this.feedingTime = feedingTime;
     }
 
@@ -42,7 +42,7 @@ public class FeedingSchedule implements Comparable<FeedingSchedule>{
         return recurrence;
     }
 
-    public void Recurrence(String recurrence) {
+    public void setRecurrence(String recurrence) {
         this.recurrence = recurrence;
     }
 
@@ -50,7 +50,7 @@ public class FeedingSchedule implements Comparable<FeedingSchedule>{
         return food;
     }
 
-    public void Food(String food) {
+    public void setFood(String food) {
         this.food = food;
     }
 
@@ -58,7 +58,7 @@ public class FeedingSchedule implements Comparable<FeedingSchedule>{
         return notes;
     }
 
-    public void Notes(String notes) {
+    public void setNotes(String notes) {
         this.notes = notes;
     }
 
@@ -66,7 +66,7 @@ public class FeedingSchedule implements Comparable<FeedingSchedule>{
         return animals;
     }
 
-    public void Animals(String animals) {
+    public void setAnimals(String animals) {
         this.animals = animals;
     }
 
@@ -75,8 +75,8 @@ public class FeedingSchedule implements Comparable<FeedingSchedule>{
     @Override
     public String toString() {
         if (this.scheduleID != 0) {
-            return "Feeding Schedule [scheduleID=" + scheduleID + ", feedingTime=" + feedingTime + ", recurrence=" + recurrence +
-        ", food=" + food + ", notes=" + notes + "]";
+        	return "Feeding Schedule [scheduleID=" + scheduleID + ", feedingTime=" + feedingTime + ", recurrence=" + recurrence + ", food="
+    				+ food + ", notes=" + notes + "]";
 
         }
 

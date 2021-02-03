@@ -22,7 +22,7 @@ public class DeleteFeedingScheduleServlet extends HttpServlet {
     private static final long serialVersionUTD = 1L;
 
     @Override
-    protected void doPost(HttpervletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         int scheduleID = Integer.parseInt(request.getParameter("scheduleID"));
 
@@ -31,15 +31,15 @@ public class DeleteFeedingScheduleServlet extends HttpServlet {
         String food = request.getParameter("food");
         String notes = request.getParameter("notes");
 
-        FeedingSchedule scheduleToDelete = new FeedingSchdeule(scheduleID, feedingTime, recurrence, food, notes);
+        FeedingSchedule scheduleToDelete = new FeedingSchedule(scheduleID, feedingTime, recurrence, food, notes);
 
-        FeedingScheduleDAO dao = DAOUtiltites.getFeedingScheduleDAO();
-        AnimalDAO animalDAO = DAOUtlities.getAnimalDAO();
+        FeedingScheduleDAO dao = DAOUtilities.getFeedingScheduleDAO();
+        AnimalDAO animalDAO = DAOUtilities.getAnimalDAO();
 
         try{
             List<Animal> animals = animalDAO.getAllAnimals();
             for (Animal animal : animals) {
-                if (animal.getFeedScheduleID() == scheduleToDelete.getScheduleID()) {
+                if (animal.getFeedingScheduleID() == scheduleToDelete.getScheduleID()) {
                     dao.removeFeedingSchedule(animal);
                 }
             }

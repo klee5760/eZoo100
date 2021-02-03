@@ -2,7 +2,7 @@ package com.examples.ezoo.servlets;
 
 import java.io.IOException;
 import java.sql.SQLIntegrityConstraintViolationException;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -26,10 +26,10 @@ public class FSAssignmentServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         int animalID = Integer.parseInt(request.getParameter("animalID"));
 
-        FeedingScheduleDAO dao = DAOUtilties.getFeedingScheduleDAO();
+        FeedingScheduleDAO dao = DAOUtilities.getFeedingScheduleDAO();
         List<FeedingSchedule> feedingSchedule = dao.getAllFeedingSchedules();
 
-        AnimalDAO animalDAO = DAOUtilties.getAnimalDAO();
+        AnimalDAO animalDAO = DAOUtilities.getAnimalDAO();
         List<Animal> animals = animalDAO.getAllAnimals();
         Collections.sort(animals);
         for (FeedingSchedule schedule : feedingSchedule) {
@@ -64,7 +64,7 @@ public class FSAssignmentServlet extends HttpServlet{
 
         try {
             List<Animal> animals = animalDAO.getAllAnimals();
-            Collection.sort(animals);
+            Collections.sort(animals);
             Animal animal = new Animal();
             for (Animal a : animals) {
                 if (a.getAnimalID() == animalID)

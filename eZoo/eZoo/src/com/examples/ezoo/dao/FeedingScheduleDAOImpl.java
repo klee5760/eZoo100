@@ -23,10 +23,10 @@ public class FeedingScheduleDAOImpl implements FeedingScheduleDAO{
             connection = DAOUtilities.getConnection();
             String sql = "INSERT INTO feeding_schedules VALUES (?, ?, ?, ?, ?)";
 
-            stmt = connection.preparedStatement(sql);
+            stmt = connection.prepareStatement(sql);
 
             stmt.setInt(1, feedingSchedule.getScheduleID());
-            stmt.setString(2, feedingSchedule.getFeedngTime());
+            stmt.setString(2, feedingSchedule.getFeedingTime());
             stmt.setString(3, feedingSchedule.getRecurrence());
             stmt.setString(4, feedingSchedule.getFood());
             stmt.setString(5, feedingSchedule.getNotes());
@@ -38,9 +38,9 @@ public class FeedingScheduleDAOImpl implements FeedingScheduleDAO{
             try {
                 if (stmt != null)
                 stmt.close();
-                if(connection != null)
+                if (connection != null)
                 connection.close();                          
-            } catch(SQLException e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
@@ -51,7 +51,7 @@ public class FeedingScheduleDAOImpl implements FeedingScheduleDAO{
     }
 
     @Override
-    public void deleteFeedingScedule(FeedingSchedule feedingSchedule) throws Exception {
+    public void deleteFeedingSchedule(FeedingSchedule feedingSchedule) throws Exception {
         Connection connection = null;
         PreparedStatement stmt = null;
         int success = 0;
@@ -60,7 +60,7 @@ public class FeedingScheduleDAOImpl implements FeedingScheduleDAO{
             connection = DAOUtilities.getConnection();
             String sql = "DELETE FROM feeding_schedules WHERE schedule_id = ?";
 
-            stmt = connection.preparedStatement(sql);
+            stmt = connection.prepareStatement(sql);
 
             stmt.setInt(1, feedingSchedule.getScheduleID());
 
@@ -78,7 +78,7 @@ public class FeedingScheduleDAOImpl implements FeedingScheduleDAO{
             }
         }
 
-        if (success = 0) {
+        if (success == 0) {
             throw new Exception("Delete feeding schedule failed: +" + feedingSchedule);
         }
     }
@@ -96,7 +96,7 @@ public class FeedingScheduleDAOImpl implements FeedingScheduleDAO{
 
             String sql = "SELECT * FROM feeding_schedules";
 
-            Results rs = stmt.executeQuery(sql);
+            ResultSet rs = stmt.executeQuery(sql);
 
             while (rs.next()) {
                 FeedingSchedule fs = new FeedingSchedule();
@@ -128,7 +128,7 @@ public class FeedingScheduleDAOImpl implements FeedingScheduleDAO{
     }
 
     @Override
-    public FeedingSchedule getAllFeedingSchedules(Animal animal) {
+    public FeedingSchedule getFeedingSchedule(Animal animal) {
         FeedingSchedule feedingSchedule = new FeedingSchedule();
         Connection connection = null;
         PreparedStatement stmt = null;
@@ -180,10 +180,10 @@ public class FeedingScheduleDAOImpl implements FeedingScheduleDAO{
 
             stmt = connection.prepareStatement(sql);
 
-            stmt.setInt(1, animal.getFeedingScheduleID());
-            stmt.setLong(2, animalgetAnimalID());
+            stmt.setInt(1, feedingSchedule.getScheduleID());
+            stmt.setLong(2, animal.getAnimalID());
 
-            success = stmt.executeQuery();
+            success = stmt.executeUpdate();
 
             
         } catch (SQLException e) {
@@ -213,13 +213,13 @@ public class FeedingScheduleDAOImpl implements FeedingScheduleDAO{
 
         try {
             connection = DAOUtilities.getConnection();
-            String sql = "UPDATE animals SET feeding_schedule = null WHERE animal_id = ?";
+            String sql = "UPDATE animals SET feeding_schedule = null WHERE animalid = ?";
 
             stmt = connection.prepareStatement(sql);
 
-            stmt.setLong(1, animalgetAnimalID());
+            stmt.setLong(1, animal.getAnimalID());
 
-            success = stmt.executeQuery();
+            success = stmt.executeUpdate();
 
             
         } catch (SQLException e) {
@@ -243,7 +243,7 @@ public class FeedingScheduleDAOImpl implements FeedingScheduleDAO{
     }
 
     @Override
-    public void removeFeedingSchedule(FeedingSchedule feedingSchedule) throws Exception {
+    public void updateFeedingSchedule(FeedingSchedule feedingSchedule) throws Exception {
         Connection connection = null;
         PreparedStatement stmt = null;
         int success = 0;
@@ -255,7 +255,7 @@ public class FeedingScheduleDAOImpl implements FeedingScheduleDAO{
 
             stmt = connection.prepareStatement(sql);
 
-            stmt.setString(1, feedingSchedule.getFeedngTime());
+            stmt.setString(1, feedingSchedule.getFeedingTime());
             stmt.setString(2, feedingSchedule.getRecurrence());
             stmt.setString(3, feedingSchedule.getFood());
             stmt.setString(4, feedingSchedule.getNotes());
@@ -283,4 +283,5 @@ public class FeedingScheduleDAOImpl implements FeedingScheduleDAO{
         throw new Exception("Update feeding schedule failed: " + feedingSchedule);
     
     }
+
 }
