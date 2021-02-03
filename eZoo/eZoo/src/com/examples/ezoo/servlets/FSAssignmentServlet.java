@@ -49,7 +49,7 @@ public class FSAssignmentServlet extends HttpServlet{
         }
 
         request.getSession().setAttribute("feedingSchedules", feedingSchedule);
-        request.getSession().setSttribute("animalID", animalID);
+        request.getSession().setAttribute("animalID", animalID);
 
         request.getRequestDispatcher("assignFeedingSchedule.jsp").forward(request, response);
     }
@@ -77,7 +77,7 @@ public class FSAssignmentServlet extends HttpServlet{
             }
 
             else{
-                int id = Integer.parseInt(request.getPArameter("scheduleID"));
+                int id = Integer.parseInt(request.getParameter("scheduleID"));
                 String time = request.getParameter("feedingTime");
                 String recurrence = request.getParameter("recurrence");
                 String food = request.getParameter("food");
